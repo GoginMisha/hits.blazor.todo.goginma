@@ -4,7 +4,7 @@ namespace TodoServerApp.Data.Services
 {
     public class MemoryDataService : IDataService
     {
-        private static IEnumerable<TaskItem> Tasks { get; } =
+        private static IEnumerable<TaskItem> tasks  =
 		[
 			new () { Id = 1, Title="Задача 1", Description="Описание задачи 1", CreatedDate=DateTime.Now },
             new () { Id = 2, Title="Задача 2", Description="Описание задачи 2", CreatedDate=DateTime.Now },
@@ -21,10 +21,10 @@ namespace TodoServerApp.Data.Services
 			throw new NotImplementedException();
 		}
 
-		public async Task<IEnumerable<TaskItem>> GetTaskItemsAsync()
+		public async Task<IEnumerable<TaskItem>> GetAllAsync()
         {
             await Task.Delay(1000);
-            return await Task.FromResult(Tasks);
+            return await Task.FromResult(tasks);
         }
 
 		public Task SaveAsync(TaskItem item)
